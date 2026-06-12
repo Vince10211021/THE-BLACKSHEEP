@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Moeketsi Lehlohonolo, Tattoo Artist, BlackSheep Ink, Tattoo Portfolio" />
+    <meta name="description" content="View detailed tattoo artwork by Moeketsi Lehlohonolo - The BlackSheep Ink." />
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link id='favicon' rel="shortcut icon" href="./The Black Sheep Ink/logo.jpg" type="image/x-png">
+    <title>The BlackSheep Ink | Tattoo Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            outline: none;
+            border: none;
+        }
+
+        body {
+            background: #000000;
+            font-family: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+            color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* navbar (same as main site) */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 9%;
+            height: 6.5rem;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 20px rgba(218,4,22,0.15);
+            border-bottom: 1px solid rgba(218,4,22,0.3);
+        }
+        header .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.3px;
+        }
+        header .logo i { font-size: 2.2rem; color: #da0416; }
+        header .logo:hover { color: #da0416; }
+        header .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 2.8rem;
+        }
+        header .navbar ul li a {
+            font-size: 1.65rem;
+            font-weight: 600;
+            color: #f0f0f0;
+            transition: 0.2s;
+        }
+        header .navbar ul li a:hover {
+            color: #da0416;
+            border-bottom: 2px solid #da0416;
+            padding-bottom: 0.4rem;
+        }
+        #menu { font-size: 2.8rem; cursor: pointer; display: none; color: #fff; }
+        @media (max-width: 768px) {
+            header .navbar {
+                position: fixed;
+                top: 6.5rem;
+                right: -120%;
+                width: 75%;
+                height: 100vh;
+                background: #0a0a0f;
+                backdrop-filter: blur(12px);
+                transition: 0.3s;
+                padding: 2rem;
+                border-left: 1px solid #da0416;
+            }
+            header .navbar ul { flex-direction: column; gap: 1.5rem; }
+            header .navbar ul li a {
+                font-size: 2rem;
+                display: block;
+            }
+            header .navbar.nav-toggle { right: 0; }
+            .fa-times { transform: rotate(180deg); }
+            #menu { display: block; }
+        }
+
+        /* gallery detail section */
+        .gallery-detail {
+            padding: 10rem 9% 5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .image-container {
+            max-width: 90%;
+            margin: 0 auto;
+            text-align: center;
+            background: #0a0a0a;
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 1px solid rgba(218,4,22,0.4);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.5);
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .button-group {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 90%;   /* same as image container */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .back-btn, .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.6rem;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .back-btn {
+            background: #da0416;
+            color: white;
+        }
+        .back-btn:hover {
+            background: #a80512;
+            transform: translateX(-4px);
+        }
+        .download-btn {
+            background: #1f1f2f;
+            color: #fff;
+            border: 1px solid #da0416;
+        }
+        .download-btn:hover {
+            background: #da0416;
+            transform: translateY(-2px);
+            border-color: #fff;
+        }
+        .caption {
+            margin-top: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #da0416;
+            text-align: center;
+        }
+        .caption span {
+            color: #fff;
+            font-weight: 400;
+        }
+
+        /* footer minimal */
+        .footer {
+            background: #050505;
+            padding: 2rem 9%;
+            text-align: center;
+            border-top: 1px solid rgba(218,4,22,0.3);
+            margin-top: auto;
+        }
+        .footer p {
+            font-size: 1.3rem;
+            color: #aaa;
+        }
+        .footer a {
+            color: #da0416;
+        }
+        @media (max-width: 768px) {
+            .gallery-detail { padding: 8rem 5% 3rem; }
+            .image-container { padding: 1rem; max-width: 95%; }
+            .button-group { max-width: 95%; gap: 1rem; }
+            .caption { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="/" class="logo"><i class="fas fa-pen-fancy"></i> The BlackSheep Ink</a>
+    <div id="menu" class="fas fa-bars"></div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#service">Services</a></li>
+            <li><a href="index.html#contacts">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="gallery-detail">
+    <div class="image-container">
+        <img id="tattooImage" draggable="false" src="./The Black Sheep Ink/work7.jpg" alt="Tattoo artwork by Moeketsi Lehlohonolo">
+    </div>
+    <div class="caption">
+        <i class="fas fa-tag"></i> <span>Fine-line realism • Custom piece</span>
+    </div>
+    <div class="button-group">
+        <a href="index.html#service" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Gallery</a>
+        <button id="downloadBtn" class="download-btn"><i class="fas fa-download"></i> Download Image</button>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>© 2025 The BlackSheep Ink — Designed with <i class="fas fa-heart" style="color:#da0416;"></i> by CodeWithVince</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // Mobile menu toggle
+        $('#menu').click(function(){
+            $(this).toggleClass('fa-times');
+            $('.navbar').toggleClass('nav-toggle');
+        });
+        $(window).on('scroll load', function(){
+            if($('#menu').hasClass('fa-times')) {
+                $('#menu').removeClass('fa-times');
+                $('.navbar').removeClass('nav-toggle');
+            }
+        });
+        // Smooth scroll for anchor links
+        $('a[href*="#"]').on('click', function(e){
+            if(this.hash !== "" && $(this.hash).length) {
+                e.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $(this.hash).offset().top - 70
+                }, 500);
+            }
+        });
+
+        // Download image functionality
+        $('#downloadBtn').click(function(){
+            const imageUrl = $('#tattooImage').attr('src');
+            const link = document.createElement('a');
+            link.href = imageUrl;
+            let filename = imageUrl.split('/').pop();
+            if (!filename || filename === '') filename = 'the_blacksheep_ink_artwork.jpg';
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    });
+</script>
+</body>
+</html>
